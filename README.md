@@ -6,13 +6,13 @@ Projeto da disciplina tópicos avançados em computação. 08/03/26
 Tema do projeto: Website com foco em vendas de livros para os amantes de literatura e filosofia.
 
 Domínios:
-1. Micrisserviços bem definidos
+1. Microsserviços bem definidos
 2. Catálogo
 3. Estoque
 4. Pedido
 5. Pagamento
 6. Entrega
-7. avaliações
+7. Avaliações
 8. Usuário
 
 Exploração: 
