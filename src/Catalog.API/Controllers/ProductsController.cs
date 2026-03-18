@@ -28,7 +28,7 @@ namespace Catalog.API.Controllers
             return Ok(product);
         }
 
-        // CRIAR
+        // CRIA
         [HttpPost]
         public ActionResult<Product> Create(Product product)
         {
@@ -39,7 +39,7 @@ namespace Catalog.API.Controllers
                 new { id = product.Id }, product);
         }
 
-        // ATUALIZAR
+        // ATUALIZA
         [HttpPut("{id}")]
         public IActionResult Update(Guid id, Product updatedProduct)
         {
