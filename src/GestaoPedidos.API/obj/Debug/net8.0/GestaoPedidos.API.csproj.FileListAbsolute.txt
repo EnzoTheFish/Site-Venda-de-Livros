@@ -1,0 +1,9 @@
+C:\Users\Tralhoto\Desktop\topicos_avancados\Site-Venda-de-Livros\src\GestaoPedidos.API\obj\Debug\net8.0\GestaoPedidos.API.csproj.AssemblyReference.cache
+C:\Users\Tralhoto\Desktop\topicos_avancados\Site-Venda-de-Livros\src\GestaoPedidos.API\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\Tralhoto\Desktop\topicos_avancados\Site-Venda-de-Livros\src\GestaoPedidos.API\obj\Debug\net8.0\GestaoPedidos.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tralhoto\Desktop\topicos_avancados\Site-Venda-de-Livros\src\GestaoPedidos.API\obj\Debug\net8.0\GestaoPedidos.API.AssemblyInfoInputs.cache
+C:\Users\Tralhoto\Desktop\topicos_avancados\Site-Venda-de-Livros\src\GestaoPedidos.API\obj\Debug\net8.0\GestaoPedidos.API.AssemblyInfo.cs
+C:\Users\Tralhoto\Desktop\topicos_avancados\Site-Venda-de-Livros\src\GestaoPedidos.API\obj\Debug\net8.0\GestaoPedidos.API.csproj.CoreCompileInputs.cache
+C:\Users\Tralhoto\Desktop\topicos_avancados\Site-Venda-de-Livros\src\GestaoPedidos.API\obj\Debug\net8.0\GestaoPedidos.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Tralhoto\Desktop\topicos_avancados\Site-Venda-de-Livros\src\GestaoPedidos.API\obj\Debug\net8.0\GestaoPedidos.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Tralhoto\Desktop\topicos_avancados\Site-Venda-de-Livros\src\GestaoPedidos.API\obj\Debug\net8.0\GestaoPedidos.API.sourcelink.json

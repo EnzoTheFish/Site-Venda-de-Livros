@@ -8,6 +8,9 @@ C:\Users\Tralhoto\Desktop\topicos avançados computaçao\Site-Venda-de-Livros\sr
 C:\Users\Tralhoto\Desktop\topicos avançados computaçao\Site-Venda-de-Livros\src\Catalog.API\bin\Debug\net10.0\Catalog.API.pdb
 C:\Users\Tralhoto\Desktop\topicos avançados computaçao\Site-Venda-de-Livros\src\Catalog.API\bin\Debug\net10.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\Tralhoto\Desktop\topicos avançados computaçao\Site-Venda-de-Livros\src\Catalog.API\bin\Debug\net10.0\Microsoft.OpenApi.dll
+C:\Users\Tralhoto\Desktop\topicos avançados computaçao\Site-Venda-de-Livros\src\Catalog.API\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Tralhoto\Desktop\topicos avançados computaçao\Site-Venda-de-Livros\src\Catalog.API\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Tralhoto\Desktop\topicos avançados computaçao\Site-Venda-de-Livros\src\Catalog.API\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\Tralhoto\Desktop\topicos avançados computaçao\Site-Venda-de-Livros\src\Catalog.API\obj\Debug\net10.0\Catalog.API.csproj.AssemblyReference.cache
 C:\Users\Tralhoto\Desktop\topicos avançados computaçao\Site-Venda-de-Livros\src\Catalog.API\obj\Debug\net10.0\rpswa.dswa.cache.json
 C:\Users\Tralhoto\Desktop\topicos avançados computaçao\Site-Venda-de-Livros\src\Catalog.API\obj\Debug\net10.0\Catalog.API.GeneratedMSBuildEditorConfig.editorconfig
@@ -32,6 +35,3 @@ C:\Users\Tralhoto\Desktop\topicos avançados computaçao\Site-Venda-de-Livros\sr
 C:\Users\Tralhoto\Desktop\topicos avançados computaçao\Site-Venda-de-Livros\src\Catalog.API\obj\Debug\net10.0\Catalog.API.pdb
 C:\Users\Tralhoto\Desktop\topicos avançados computaçao\Site-Venda-de-Livros\src\Catalog.API\obj\Debug\net10.0\Catalog.API.genruntimeconfig.cache
 C:\Users\Tralhoto\Desktop\topicos avançados computaçao\Site-Venda-de-Livros\src\Catalog.API\obj\Debug\net10.0\ref\Catalog.API.dll
-C:\Users\Tralhoto\Desktop\topicos avançados computaçao\Site-Venda-de-Livros\src\Catalog.API\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\Tralhoto\Desktop\topicos avançados computaçao\Site-Venda-de-Livros\src\Catalog.API\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\Tralhoto\Desktop\topicos avançados computaçao\Site-Venda-de-Livros\src\Catalog.API\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll

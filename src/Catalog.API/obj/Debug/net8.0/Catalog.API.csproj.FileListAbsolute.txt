@@ -1,0 +1,9 @@
+C:\Users\Tralhoto\Desktop\topicos_avancados\Site-Venda-de-Livros\src\Catalog.API\obj\Debug\net8.0\Catalog.API.csproj.AssemblyReference.cache
+C:\Users\Tralhoto\Desktop\topicos_avancados\Site-Venda-de-Livros\src\Catalog.API\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\Tralhoto\Desktop\topicos_avancados\Site-Venda-de-Livros\src\Catalog.API\obj\Debug\net8.0\Catalog.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tralhoto\Desktop\topicos_avancados\Site-Venda-de-Livros\src\Catalog.API\obj\Debug\net8.0\Catalog.API.AssemblyInfoInputs.cache
+C:\Users\Tralhoto\Desktop\topicos_avancados\Site-Venda-de-Livros\src\Catalog.API\obj\Debug\net8.0\Catalog.API.AssemblyInfo.cs
+C:\Users\Tralhoto\Desktop\topicos_avancados\Site-Venda-de-Livros\src\Catalog.API\obj\Debug\net8.0\Catalog.API.csproj.CoreCompileInputs.cache
+C:\Users\Tralhoto\Desktop\topicos_avancados\Site-Venda-de-Livros\src\Catalog.API\obj\Debug\net8.0\Catalog.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Tralhoto\Desktop\topicos_avancados\Site-Venda-de-Livros\src\Catalog.API\obj\Debug\net8.0\Catalog.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Tralhoto\Desktop\topicos_avancados\Site-Venda-de-Livros\src\Catalog.API\obj\Debug\net8.0\Catalog.API.sourcelink.json

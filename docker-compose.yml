@@ -1,0 +1,39 @@
+
+services:
+
+  catalog.api:
+    build:
+      context: ./src/Catalog.API
+      dockerfile: Dockerfile
+    container_name: catalog-api
+    ports:
+      - "5269:8080"
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+
+  gestao-pedidos.api:
+    build:
+      context: ./src/GestaoPedidos.API
+      dockerfile: Dockerfile
+    container_name: gestao-pedidos-api
+    ports:
+      - "5245:8080"
+    environment:
+      - ASPNETCORE_URLS=http://+:8080 
+    depends_on:
+      - catalog.api
+
+      
+
+  api.gateway:
+    build:
+      context: ./src/ApiGateway
+      dockerfile: Dockerfile
+    container_name: api-gateway
+    ports:
+      - "5173:8080"
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+    depends_on:
+      - catalog.api
+      - gestao-pedidos.api
