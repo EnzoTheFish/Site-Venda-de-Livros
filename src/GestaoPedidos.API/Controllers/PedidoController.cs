@@ -5,6 +5,7 @@ using GestaoPedidos.API.Models;
 namespace GestaoPedidos.API.Controllers
 {
     [ApiController]
+    [Route("api/[controller]")]
     [Route("api/v1/[controller]")]
     public class PedidosController : ControllerBase
     {
@@ -16,9 +17,12 @@ namespace GestaoPedidos.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Pedido>> Criar(Guid productId, int quantidade)
+        public async Task<ActionResult<Pedido>> Criar(CriarPedidoRequest request)
         {
-            var pedido = await _service.CriarPedido(productId, quantidade);
+            if (request.Quantidade <= 0)
+                return BadRequest("A quantidade deve ser maior que zero.");
+
+            var pedido = await _service.CriarPedido(request.ProductId, request.Quantidade);
 
             if (pedido == null)
                 return NotFound("Produto não encontrado");

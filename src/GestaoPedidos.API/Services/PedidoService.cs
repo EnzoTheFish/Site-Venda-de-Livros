@@ -1,17 +1,21 @@
 using GestaoPedidos.API.Models;
 using GestaoPedidos.API.Clients;
+using GestaoPedidos.Mensageria;
+using MassTransit;
 
 namespace GestaoPedidos.API.Services
 {
     public class PedidoService
     {
         private readonly ICatalogClient _catalogClient;
+        private readonly IPublishEndpoint _publishEndpoint;
 
         private static readonly List<Pedido> _pedidos = new();
 
-        public PedidoService(ICatalogClient catalogClient)
+        public PedidoService(ICatalogClient catalogClient, IPublishEndpoint publishEndpoint)
         {
             _catalogClient = catalogClient;
+            _publishEndpoint = publishEndpoint;
         }
 
         public async Task<Pedido?> CriarPedido(Guid productId, int quantidade)
@@ -30,6 +34,12 @@ namespace GestaoPedidos.API.Services
             };
 
             _pedidos.Add(pedido);
+            await _publishEndpoint.Publish(new PedidoCriado(
+                pedido.Id,
+                pedido.ProductId,
+                pedido.Quantidade,
+                pedido.PrecoTotal,
+                DateTimeOffset.UtcNow));
 
             return pedido;
         }

@@ -1,5 +1,19 @@
 
 services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=gestaopedidos
+      - RABBITMQ_DEFAULT_PASS=gestaopedidos
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   catalog.api:
     build:
@@ -10,19 +24,44 @@ services:
       - "5269:8080"
     environment:
       - ASPNETCORE_URLS=http://+:8080
+      - ASPNETCORE_ENVIRONMENT=Development
 
   gestao-pedidos.api:
     build:
-      context: ./src/GestaoPedidos.API
-      dockerfile: Dockerfile
+      context: ./src
+      dockerfile: GestaoPedidos.API/Dockerfile
     container_name: gestao-pedidos-api
     ports:
       - "5245:8080"
     environment:
       - ASPNETCORE_URLS=http://+:8080 
+      - ASPNETCORE_ENVIRONMENT=Development
+      - RabbitMq__Host=rabbitmq
+      - RabbitMq__Port=5672
+      - RabbitMq__Username=gestaopedidos
+      - RabbitMq__Password=gestaopedidos
+      - CatalogApi__BaseUrl=http://catalog.api:8080
     depends_on:
-      - catalog.api
+      catalog.api:
+        condition: service_started
+      rabbitmq:
+        condition: service_healthy
 
+  gestaopedidos.notificacoes:
+    build:
+      context: ./src
+      dockerfile: GestaoPedidos.Notificacoes/Dockerfile
+    container_name: gestaopedidos-notificacoes
+    environment:
+      - RabbitMq__Host=rabbitmq
+      - RabbitMq__Port=5672
+      - RabbitMq__Username=gestaopedidos
+      - RabbitMq__Password=gestaopedidos
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      gestao-pedidos.api:
+        condition: service_started
       
 
   api.gateway:
