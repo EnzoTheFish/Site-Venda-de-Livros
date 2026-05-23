@@ -1,48 +1,67 @@
+using Catalog.API.Application.Commands;
+using Catalog.API.Application.Queries;
 using Catalog.API.Models;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+
 namespace Catalog.API.Controllers
 {
     [ApiController]
-    [Route("api/v1/[controller]")] // Versionamento por URI
-    public class ProductsController : ControllerBase {
-    private static readonly List<Product> _products = new List<Product> {
-            new Product { Id = Guid.NewGuid(), Name = "LivroTeste1", Description =  "Um Livro Legal", Price = 20.00M, Stock = 10 },
-            new Product { Id = Guid.NewGuid(), Name = "LivroDiferente2", Description = "Um Livro Diferente", Price = 25.00M, Stock = 50 }
-    };
-    [HttpGet]
-         public ActionResult<IEnumerable<Product>> GetProducts() {
-               return Ok(_products);
-             }
-    [HttpGet("{id}")]
-        public ActionResult<Product> GetProductById(Guid id){ var product = _products.FirstOrDefault(p => p.Id == id);
-                    if (product == null) {
-                    return NotFound(); // Retorna 404 Not Found
-                    }
-                    return Ok(product); }
+    [Route("api/v1/[controller]")]
+    public class ProductsController : ControllerBase
+    {
+        private readonly ISender _sender;
+
+        public ProductsController(ISender sender)
+        {
+            _sender = sender;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProducts(CancellationToken cancellationToken)
+        {
+            var products = await _sender.Send(new GetProductsQuery(), cancellationToken);
+            return Ok(products);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Product>> GetProductById(Guid id, CancellationToken cancellationToken)
+        {
+            var product = await _sender.Send(new GetProductByIdQuery(id), cancellationToken);
+
+            if (product == null)
+                return NotFound();
+
+            return Ok(product);
+        }
+
         [HttpPost]
-    public ActionResult<Product> CreateProduct(Product product) { product.Id = Guid.NewGuid(); _products.Add(product);
-            return CreatedAtAction(nameof(GetProductById), new { id = product.Id}, product); // Retorna 201 Created
-    }
+        public async Task<ActionResult<Product>> CreateProduct(Product product, CancellationToken cancellationToken)
+        {
+            var createdProduct = await _sender.Send(new CreateProductCommand(product), cancellationToken);
+            return CreatedAtAction(nameof(GetProductById), new { id = createdProduct.Id }, createdProduct);
+        }
+
         [HttpPut("{id}")]
-          public IActionResult UpdateProduct(Guid id, Product updatedProduct) {
-                var existingProduct = _products.FirstOrDefault(p => p.Id == id);
-                    if (existingProduct == null) {
-                            return NotFound(); 
-                            }
-                existingProduct.Name = updatedProduct.Name;
-                existingProduct.Description = updatedProduct.Description;
-                existingProduct.Price = updatedProduct.Price;
-                existingProduct.Stock = updatedProduct.Stock;
-                return NoContent(); // Retorna 204 No Content
-            }
-    [HttpDelete("{id}")]
-        public IActionResult DeleteProduct(Guid id) {
-            var product = _products.FirstOrDefault(p => p.Id == id);
-                if (product == null) {
-                    return NotFound();
-                    }
-            _products.Remove(product);
-            return NoContent(); // Retorna 204 No Content
-            }
+        public async Task<IActionResult> UpdateProduct(Guid id, Product updatedProduct, CancellationToken cancellationToken)
+        {
+            var updated = await _sender.Send(new UpdateProductCommand(id, updatedProduct), cancellationToken);
+
+            if (!updated)
+                return NotFound();
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProduct(Guid id, CancellationToken cancellationToken)
+        {
+            var deleted = await _sender.Send(new DeleteProductCommand(id), cancellationToken);
+
+            if (!deleted)
+                return NotFound();
+
+            return NoContent();
+        }
     }
 }

@@ -1,5 +1,25 @@
 
 services:
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis-insight:
+    image: redis/redisinsight:latest
+    container_name: redis-insight
+    ports:
+      - "5540:5540"
+    depends_on:
+      redis:
+        condition: service_healthy
+
   rabbitmq:
     image: rabbitmq:3-management
     container_name: rabbitmq
@@ -25,6 +45,11 @@ services:
     environment:
       - ASPNETCORE_URLS=http://+:8080
       - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__Redis=redis:6379
+      - "Redis__InstanceName=catalog:"
+    depends_on:
+      redis:
+        condition: service_healthy
 
   gestao-pedidos.api:
     build:
